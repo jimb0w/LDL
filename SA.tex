@@ -1,0 +1,909 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{siunitx}
+\usepackage{hyperref,graphicx,booktabs,dcolumn}
+\usepackage{stata}
+\usepackage[x11names]{xcolor}
+\usepackage{natbib}
+\usepackage{chngcntr}
+\usepackage{pgfplotstable}
+\usepackage{pdflscape}
+
+\usepackage{multirow}
+\usepackage{booktabs}
+
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+\newcommand{\specialcelll}[3][c]{%
+  \begin{tabular}[#1]{@{}l@{}l@{}}#2\end{tabular}}
+\newcommand{\specialcellll}[4][c]{%
+  \begin{tabular}[#1]{@{}l@{}l@{}l@{}}#2\end{tabular}}
+  
+  
+\newcommand{\thedate}{\today}
+
+\bibliographystyle{unsrt}
+
+\renewcommand{\figurename}{Supplementary Figure}
+\renewcommand{\tablename}{Supplementary Table}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{flushright}
+        \Huge
+        \textbf{Lipid-lowering strategies for primary prevention of coronary heart disease 
+in the United Kingdom: A cost-effectiveness analysis \\}
+\color{black}
+
+\rule{16cm}{2mm} \\
+\Large
+\color{black}
+Supplementary Appendix \\
+\color{blue}
+\color{black}
+       \vfill
+    \end{flushright}
+        \Large
+\noindent
+Jedidiah I Morton, Clara Marquina, Melanie Lloyd, Gerald F Watts, Sophia Zoungas, Danny Liew, and Zanfina Ademi
+\end{titlepage}
+
+\listoftables
+\pagebreak
+\listoffigures
+\pagebreak
+\Large
+\noindent
+\textbf{Abbreviations}
+\normalsize
+
+\begin{itemize}
+\item CHD: Coronary heart disease
+\item LDL-C: Low-density lipoprotein-cholesterol
+\item LLS: Lipid lowering strategy
+\item MI: Myocardial infarction
+\item MR: Mendelian randomisation
+\item NHS: National Health Service (of the United Kingdom)
+\item OSA: One-way sensitivity analysis
+\item PSA: Probabilistic sensitivity analysis
+\item QALY: Quality-adjusted life year
+\item RR: Relative risk
+\item SE: Standard error
+\item UK: United Kingdom
+\item YLL: Years of life lived
+\end{itemize}
+
+
+
+\pagebreak
+
+
+\begin{table}[]
+    \caption{Model inputs}
+    \label{inputtable}
+\hspace*{-2cm}
+\fontsize{6pt}{10pt}\selectfont\begin{tabular}{lllll}
+\hline \\
+Input & Value & Distribution & Source & \\
+\hline \\
+Incidence of non-fatal MI & Age and sex-specific & \specialcell{\noindent Log-normal \\ See Figure~\ref{MIinc}} & UK Biobank & \\
+Incidence of fatal MI & Age and sex-specific & \specialcell{\noindent Log-normal \\ See Figure~\ref{NOCVDmort}} & UK Biobank & \\
+\specialcell{\noindent Non-CHD mortality rate \\ for people without MI} & Age and sex-specific & \specialcell{\noindent Log-normal 
+\\ See Figure~\ref{NOCVDmort}} & UK Biobank & \\
+\specialcell{\noindent All-cause mortality rate \\ for people with MI} & \specialcell{\noindent Age-, sex-, and \\ 
+time-since-MI-specific} & \specialcell{\noindent Log-normal \\ See Figure~\ref{PMImort}} & UK Biobank & \\
+\specialcell{Effect of statins on LDL-C \\ (control arm only)} & 45\% (44, 46) reduction & Normal & \cite{AdamsCDSR2015} & \\
+Effect of interventions on LDL-C & \specialcellll{Low/moderate intensity statins: 40\% (39, 41) reduction \\ 
+High intensity statins: 50\% (49, 51) reduction \\ Low/moderate intensity statins and ezetimibe: 55\% (54, 56) reduction \\ 
+Inclisiran: 51.5\% (49.0, 53.9) reduction} & Normal & \specialcellll{\cite{AdamsCDSR2015} \\ \cite{AdamsCDSR2015} \\ 
+\cite{AmbeAth2014} \\ \cite{KausikNEJM2020}} & \\
+\specialcell{\noindent Effect of cumulative LDL-C \\ on the incidence of MI} & RR: 0.48 (0.45, 0.50) & Log-normal & 
+\cite{FerenceJAMA2019} & \\
+Utility for people without MI & Age and sex-specific ($\pm$ 5\%) & \specialcell{\noindent Modified normal \\ 
+See Figure~\ref{PSAFig4}} & \cite{ARAVIH2010} &  \\
+Chronic utility for people with MI & 0.79 (0.73, 0.85) & Beta & \cite{BettsHQLO2020} & \\
+Acute disutility for MI & -0.03 ($\pm$ 50\%) & Normal & \cite{LewisJACCHF2014} & \\
+Cost of acute MI & \textsterling 2047.31 ($\pm$ 15\%) & Gamma  & \specialcell{\noindent National Health Service Cost \\ 
+Schedule; See Table~\ref{ACUTEMICOST}} &  \\
+\specialcell{\noindent Excess healthcare costs \\ for people with MI} & \specialcell{\noindent 
+\textsterling 4705.45 (SE: 112.71) for the first 6 months \\ \textsterling 1015.21 (SE: 171.23) per year thereafter} & 
+Gamma & \cite{DaneseeBMJO2016} &  \\ 
+\specialcell{Annual cost of statins \\ (control arm only)} & \textsterling 19.00 & Fixed & \cite{NHSDrugTariff,NHSEPD} & \\
+Annual cost of interventions & \specialcellll{Low/moderate intensity statins: \textsterling 18.39  \\ High intensity statins: 
+\textsterling 27.39 \\ low/moderate intensity statins and ezetimibe: \textsterling 49.31 \\ Inclisiran: \textsterling 3974.72} & 
+Fixed & \specialcellll{\cite{NHSDrugTariff} \\ \cite{NHSDrugTariff} \\ \cite{NHSDrugTariff} \\ \cite{NHSDMDInclisiran2022}} & \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Proportion of primary prevention population in the control scenario on LLT 
+at or before a given age, stratified by sex and LDL-C.}
+    \label{statinproptab}
+     \selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Sex,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{4}{*}{##1}}}},
+      display columns/1/.style={column name=Age, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name=Overall, column type={r}},
+      display columns/3/.style={column name=$\geq$3.0, column type={r}},
+      display columns/4/.style={column name=$\geq$4.0, column type={r}},
+      display columns/5/.style={column name=$\geq$5.0, column type={r}},
+      every head row/.style={
+        before row={\toprule
+					& & \multicolumn{4}{c}{LDL-C (mmol/L)}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={5}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/statinprop.csv}
+  \end{center}
+\end{table}
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Calculation of acute MI costs}
+    \label{ACUTEMICOST}
+     \fontsize{7pt}{9pt}\selectfont\pgfplotstabletypeset[
+      col sep=comma,
+      header=false,
+      string type,
+      display columns/0/.style={column name=Code, column type={l}, text indicator="},
+      display columns/1/.style={column name=Description, column type={l}},
+      display columns/2/.style={column name=Number, column type={r}},
+      display columns/3/.style={column name=Unit cost (\textsterling), column type={r}},
+	  display columns/4/.style={column name=Weighted mean (\textsterling),
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{5}{*}{##1}}}},
+      every head row/.style={
+        before row={\toprule},
+        after row={\midrule}
+            },
+        every last row/.style={after row=\bottomrule},
+    ]{ACUTEMICOST.csv}
+  \end{center}
+\end{table}
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Mean; median (IQR) LDL-C by stratification group.}
+    \label{mldltab}
+     \selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Sex,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{4}{*}{##1}}}},
+      display columns/1/.style={column name=LDL-C (mmol/L), column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name= Mean; median (IQR), column type={r}},
+      every head row/.style={
+        before row={\toprule
+					},
+        after row={\midrule}
+            },
+        every nth row={4}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/mldl.csv}
+  \end{center}
+\end{table}
+
+
+
+
+\clearpage
+
+\begin{landscape}
+
+The results of the PSA for the overall population are shown here. For results stratified by sex and LDL-C, see the \href{https://github.com/jimb0w/LDL}{protocol}, pages 223-254. 
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{PSA results -- Low/moderate intensity statins}
+    \label{Microsim1PSA}
+	\hspace*{-2.00cm}
+     \fontsize{0.1pt}{0.15pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{10}{*}{##1}}}},
+      display columns/1/.style={column name=, column type={l}, text indicator="},
+      display columns/2/.style={column name=, column type={r}, column type/.add={|}{|}},
+      display columns/3/.style={column name=Absolute value, column type={r}},
+      display columns/4/.style={column name=Difference to control, column type={r}, column type/.add={}{|}},
+      every head row/.style={
+        before row={\toprule
+					\multicolumn{1}{c}{Age of intervention} & \multicolumn{1}{c}{Outcome} & \multicolumn{1}{c}{Control} & \multicolumn{2}{c}{Intervention}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={10}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA_1.csv}
+  \end{center}
+\end{table}
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{PSA results -- High intensity statins}
+    \label{Microsim2PSA}
+	\hspace*{-2.00cm}
+     \fontsize{1pt}{1.5pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{10}{*}{##1}}}},
+      display columns/1/.style={column name=, column type={l}, text indicator="},
+      display columns/2/.style={column name=, column type={r}, column type/.add={|}{|}},
+      display columns/3/.style={column name=Absolute value, column type={r}},
+      display columns/4/.style={column name=Difference to control, column type={r}, column type/.add={}{|}},
+      every head row/.style={
+        before row={\toprule
+					\multicolumn{1}{c}{Age of intervention} & \multicolumn{1}{c}{Outcome} & \multicolumn{1}{c}{Control} & \multicolumn{2}{c}{Intervention}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={10}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA_2.csv}
+  \end{center}
+\end{table}
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{PSA results -- Low/moderate intensity statins and ezetimibe}
+    \label{Microsim3PSA}
+	\hspace*{-2.00cm}
+     \fontsize{1pt}{1.5pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{10}{*}{##1}}}},
+      display columns/1/.style={column name=, column type={l}, text indicator="},
+      display columns/2/.style={column name=, column type={r}, column type/.add={|}{|}},
+      display columns/3/.style={column name=Absolute value, column type={r}},
+      display columns/4/.style={column name=Difference to control, column type={r}, column type/.add={}{|}},
+      every head row/.style={
+        before row={\toprule
+					\multicolumn{1}{c}{Age of intervention} & \multicolumn{1}{c}{Outcome} & \multicolumn{1}{c}{Control} & \multicolumn{2}{c}{Intervention}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={10}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA_3.csv}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{PSA results -- Inclisiran}
+    \label{Microsim4PSA}
+	\hspace*{-2.00cm}
+     \fontsize{1pt}{1.5pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{10}{*}{##1}}}},
+      display columns/1/.style={column name=, column type={l}, text indicator="},
+      display columns/2/.style={column name=, column type={r}, column type/.add={|}{|}},
+      display columns/3/.style={column name=Absolute value, column type={r}},
+      display columns/4/.style={column name=Difference to control, column type={r}, column type/.add={}{|}},
+      every head row/.style={
+        before row={\toprule
+					\multicolumn{1}{c}{Age of intervention} & \multicolumn{1}{c}{Outcome} & \multicolumn{1}{c}{Control} & \multicolumn{2}{c}{Intervention}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={10}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA_4.csv}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{PSA results -- Summary of all interventions -- All females.}
+    \label{Microsim5PSA00}
+	\hspace*{-3.00cm}
+     \fontsize{1pt}{1.5pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Age of intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{10}{*}{##1}}}},
+      display columns/1/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name=Control, column type={r}, column type/.add={}{|}},
+      display columns/3/.style={column name=\specialcell{\noindent Low/moderate \\ intensity statins}, column type={r}, column type/.add={}{|}},
+      display columns/4/.style={column name=High intensity statins, column type={r}, column type/.add={}{|}},
+      display columns/5/.style={column name=\specialcell{\noindent Low/moderate intensity \\ statins and ezetimibe}, column type={r}, column type/.add={}{|}},
+      display columns/6/.style={column name=Inclisiran, column type={r}, column type/.add={}{|}},
+      every head row/.style={
+        before row={\toprule
+					& & \multicolumn{1}{c}{Absolute value} & \multicolumn{4}{c}{Difference to control}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={10}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA_sex_0_ldl_0.csv}
+  \end{center}
+\end{table}
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{PSA results -- Summary of all interventions -- All males.}
+    \label{Microsim5PSA10}
+	\hspace*{-3.00cm}
+     \fontsize{1pt}{1.5pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Age of intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{10}{*}{##1}}}},
+      display columns/1/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name=Control, column type={r}, column type/.add={}{|}},
+      display columns/3/.style={column name=\specialcell{\noindent Low/moderate \\ intensity statins}, column type={r}, column type/.add={}{|}},
+      display columns/4/.style={column name=High intensity statins, column type={r}, column type/.add={}{|}},
+      display columns/5/.style={column name=\specialcell{\noindent Low/moderate intensity \\ statins and ezetimibe}, column type={r}, column type/.add={}{|}},
+      display columns/6/.style={column name=Inclisiran, column type={r}, column type/.add={}{|}},
+      every head row/.style={
+        before row={\toprule
+					& & \multicolumn{1}{c}{Absolute value} & \multicolumn{4}{c}{Difference to control}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={10}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA_sex_1_ldl_0.csv}
+  \end{center}
+\end{table}
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{PSA results -- Summary of all interventions -- Females with LDL-C $\geq$3.0 mmol/L.}
+    \label{Microsim5PSA03}
+	\hspace*{-3.00cm}
+     \fontsize{1pt}{1.5pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Age of intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{10}{*}{##1}}}},
+      display columns/1/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name=Control, column type={r}, column type/.add={}{|}},
+      display columns/3/.style={column name=\specialcell{\noindent Low/moderate \\ intensity statins}, column type={r}, column type/.add={}{|}},
+      display columns/4/.style={column name=High intensity statins, column type={r}, column type/.add={}{|}},
+      display columns/5/.style={column name=\specialcell{\noindent Low/moderate intensity \\ statins and ezetimibe}, column type={r}, column type/.add={}{|}},
+      display columns/6/.style={column name=Inclisiran, column type={r}, column type/.add={}{|}},
+      every head row/.style={
+        before row={\toprule
+					& & \multicolumn{1}{c}{Absolute value} & \multicolumn{4}{c}{Difference to control}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={10}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA_sex_0_ldl_3.csv}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{PSA results -- Summary of all interventions -- Females with LDL-C $\geq$4.0 mmol/L.}
+    \label{Microsim5PSA04}
+	\hspace*{-3.00cm}
+     \fontsize{1pt}{1.5pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Age of intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{10}{*}{##1}}}},
+      display columns/1/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name=Control, column type={r}, column type/.add={}{|}},
+      display columns/3/.style={column name=\specialcell{\noindent Low/moderate \\ intensity statins}, column type={r}, column type/.add={}{|}},
+      display columns/4/.style={column name=High intensity statins, column type={r}, column type/.add={}{|}},
+      display columns/5/.style={column name=\specialcell{\noindent Low/moderate intensity \\ statins and ezetimibe}, column type={r}, column type/.add={}{|}},
+      display columns/6/.style={column name=Inclisiran, column type={r}, column type/.add={}{|}},
+      every head row/.style={
+        before row={\toprule
+					& & \multicolumn{1}{c}{Absolute value} & \multicolumn{4}{c}{Difference to control}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={10}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA_sex_0_ldl_4.csv}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{PSA results -- Summary of all interventions -- Females with LDL-C $\geq$5.0 mmol/L.}
+    \label{Microsim5PSA05}
+	\hspace*{-3.00cm}
+     \fontsize{1pt}{1.5pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Age of intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{10}{*}{##1}}}},
+      display columns/1/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name=Control, column type={r}, column type/.add={}{|}},
+      display columns/3/.style={column name=\specialcell{\noindent Low/moderate \\ intensity statins}, column type={r}, column type/.add={}{|}},
+      display columns/4/.style={column name=High intensity statins, column type={r}, column type/.add={}{|}},
+      display columns/5/.style={column name=\specialcell{\noindent Low/moderate intensity \\ statins and ezetimibe}, column type={r}, column type/.add={}{|}},
+      display columns/6/.style={column name=Inclisiran, column type={r}, column type/.add={}{|}},
+      every head row/.style={
+        before row={\toprule
+					& & \multicolumn{1}{c}{Absolute value} & \multicolumn{4}{c}{Difference to control}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={10}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA_sex_0_ldl_5.csv}
+  \end{center}
+\end{table}
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{PSA results -- Summary of all interventions -- Males with LDL-C $\geq$3.0 mmol/L.}
+    \label{Microsim5PSA13}
+	\hspace*{-3.00cm}
+     \fontsize{1pt}{1.5pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Age of intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{10}{*}{##1}}}},
+      display columns/1/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name=Control, column type={r}, column type/.add={}{|}},
+      display columns/3/.style={column name=\specialcell{\noindent Low/moderate \\ intensity statins}, column type={r}, column type/.add={}{|}},
+      display columns/4/.style={column name=High intensity statins, column type={r}, column type/.add={}{|}},
+      display columns/5/.style={column name=\specialcell{\noindent Low/moderate intensity \\ statins and ezetimibe}, column type={r}, column type/.add={}{|}},
+      display columns/6/.style={column name=Inclisiran, column type={r}, column type/.add={}{|}},
+      every head row/.style={
+        before row={\toprule
+					& & \multicolumn{1}{c}{Absolute value} & \multicolumn{4}{c}{Difference to control}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={10}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA_sex_1_ldl_3.csv}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{PSA results -- Summary of all interventions -- Males with LDL-C $\geq$4.0 mmol/L.}
+    \label{Microsim5PSA14}
+	\hspace*{-3.00cm}
+     \fontsize{1pt}{1.5pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Age of intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{10}{*}{##1}}}},
+      display columns/1/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name=Control, column type={r}, column type/.add={}{|}},
+      display columns/3/.style={column name=\specialcell{\noindent Low/moderate \\ intensity statins}, column type={r}, column type/.add={}{|}},
+      display columns/4/.style={column name=High intensity statins, column type={r}, column type/.add={}{|}},
+      display columns/5/.style={column name=\specialcell{\noindent Low/moderate intensity \\ statins and ezetimibe}, column type={r}, column type/.add={}{|}},
+      display columns/6/.style={column name=Inclisiran, column type={r}, column type/.add={}{|}},
+      every head row/.style={
+        before row={\toprule
+					& & \multicolumn{1}{c}{Absolute value} & \multicolumn{4}{c}{Difference to control}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={10}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA_sex_1_ldl_4.csv}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{PSA results -- Summary of all interventions -- Males with LDL-C $\geq$5.0 mmol/L.}
+    \label{Microsim5PSA15}
+	\hspace*{-3.00cm}
+     \fontsize{1pt}{1.5pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Age of intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{10}{*}{##1}}}},
+      display columns/1/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name=Control, column type={r}, column type/.add={}{|}},
+      display columns/3/.style={column name=\specialcell{\noindent Low/moderate \\ intensity statins}, column type={r}, column type/.add={}{|}},
+      display columns/4/.style={column name=High intensity statins, column type={r}, column type/.add={}{|}},
+      display columns/5/.style={column name=\specialcell{\noindent Low/moderate intensity \\ statins and ezetimibe}, column type={r}, column type/.add={}{|}},
+      display columns/6/.style={column name=Inclisiran, column type={r}, column type/.add={}{|}},
+      every head row/.style={
+        before row={\toprule
+					& & \multicolumn{1}{c}{Absolute value} & \multicolumn{4}{c}{Difference to control}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={10}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA_sex_1_ldl_5.csv}
+  \end{center}
+\end{table}
+
+\end{landscape}
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Microsimulation results -- Summary of all interventions. All results shown are the difference between the intervention and control.}
+    \label{Microsim5}
+     \fontsize{6pt}{8pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Age of intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{4}{*}{##1}}}},
+      display columns/1/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name= \specialcell{\noindent Low/moderate \\ intensity statins}, column type={r}},
+      display columns/3/.style={column name=High intensity statins, column type={r}, column type/.add={}{}},
+      display columns/4/.style={column name=\specialcell{\noindent Low/moderate intensity \\ statins and ezetimibe}, column type={r}},
+      display columns/5/.style={column name=Inclisiran, column type={r}, column type/.add={}{}},
+      every head row/.style={
+        before row={\toprule
+					},
+        after row={\midrule}
+            },
+        every nth row={4}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF.csv}
+  \end{center}
+\end{table}
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Microsimulation results -- Summary of all interventions. Scenario 1: discounting rate set at 0\%. All results shown are the difference between the intervention and control.}
+    \label{Microsim5Sce1}
+     \fontsize{6pt}{8pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Age of intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{4}{*}{##1}}}},
+      display columns/1/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name= \specialcell{\noindent Low/moderate \\ intensity statins}, column type={r}},
+      display columns/3/.style={column name=High intensity statins, column type={r}, column type/.add={}{}},
+      display columns/4/.style={column name=\specialcell{\noindent Low/moderate intensity \\ statins and ezetimibe}, column type={r}},
+      display columns/5/.style={column name=Inclisiran, column type={r}, column type/.add={}{}},
+      every head row/.style={
+        before row={\toprule
+					},
+        after row={\midrule}
+            },
+        every nth row={4}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_SCE1.csv}
+  \end{center}
+\end{table}
+
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Microsimulation results -- Summary of all interventions. Scenario 2: discounting rate set at 1.5\%. All results shown are the difference between the intervention and control.}
+    \label{Microsim5Sce2}
+     \fontsize{6pt}{8pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Age of intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{4}{*}{##1}}}},
+      display columns/1/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name= \specialcell{\noindent Low/moderate \\ intensity statins}, column type={r}},
+      display columns/3/.style={column name=High intensity statins, column type={r}, column type/.add={}{}},
+      display columns/4/.style={column name=\specialcell{\noindent Low/moderate intensity \\ statins and ezetimibe}, column type={r}},
+      display columns/5/.style={column name=Inclisiran, column type={r}, column type/.add={}{}},
+      every head row/.style={
+        before row={\toprule
+					},
+        after row={\midrule}
+            },
+        every nth row={4}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_SCE2.csv}
+  \end{center}
+\end{table}
+
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Microsimulation results -- Summary of all interventions. Scenario 3: Interventions decrease in efficacy at 1\% per year. All results shown are the difference between the intervention and control.}
+    \label{Microsim5Sce3}
+     \fontsize{6pt}{8pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Age of intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{4}{*}{##1}}}},
+      display columns/1/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name= \specialcell{\noindent Low/moderate \\ intensity statins}, column type={r}},
+      display columns/3/.style={column name=High intensity statins, column type={r}, column type/.add={}{}},
+      display columns/4/.style={column name=\specialcell{\noindent Low/moderate intensity \\ statins and ezetimibe}, column type={r}},
+      display columns/5/.style={column name=Inclisiran, column type={r}, column type/.add={}{}},
+      every head row/.style={
+        before row={\toprule
+					},
+        after row={\midrule}
+            },
+        every nth row={4}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_SCE3.csv}
+  \end{center}
+\end{table}
+
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Microsimulation results -- Summary of all interventions. 
+Scenario 4: 40\% of people stop taking therapy immediately. 
+All results shown are the difference between the intervention and control.}
+    \label{Microsim5Sce4}
+     \fontsize{6pt}{8pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Age of intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{4}{*}{##1}}}},
+      display columns/1/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name= \specialcell{\noindent Low/moderate \\ intensity statins}, column type={r}},
+      display columns/3/.style={column name=High intensity statins, column type={r}, column type/.add={}{}},
+      display columns/4/.style={column name=\specialcell{\noindent Low/moderate intensity \\ statins and ezetimibe}, column type={r}},
+      display columns/5/.style={column name=Inclisiran, column type={r}, column type/.add={}{}},
+      every head row/.style={
+        before row={\toprule
+					},
+        after row={\midrule}
+            },
+        every nth row={4}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_SCE4.csv}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Maximum annual cost of Inclisiran (\textsterling; 284mg dose twice yearly) at which the ICER is under the UK willingness-to-pay (WTP) threshold, by discounting rate, WTP threshold, sex, and LDL-C.}
+    \label{Tresh}
+     \fontsize{7pt}{9pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Discounting rate,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{16}{*}{##1}}}},
+	  display columns/1/.style={column name=WTP threshold (\textsterling),
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{8}{*}{##1}}}},
+	  display columns/2/.style={column name=Sex,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{4}{*}{##1}}}},
+      display columns/3/.style={column name=Age of intervention, column type={l}},
+      display columns/4/.style={column name=Overall, column type={r}, column type/.add={|}{}},
+      display columns/5/.style={column name=$\geq$3.0 mmol/L, column type={r}},
+      display columns/6/.style={column name=$\geq$4.0 mmol/L, column type={r}},
+      display columns/7/.style={column name=$\geq$5.0 mmol/L, column type={r}, column type/.add={}{|}},
+      every head row/.style={
+        before row={\toprule
+					& & & & & \multicolumn{3}{c}{LDL-C}\\
+					},
+        after row={\midrule}
+            },
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Treshres.csv}
+  \end{center}
+\end{table}
+
+\clearpage
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Model schematic.pdf}
+    \caption{Model structure. Dashed lines are transition probabilities influenced by mean cumulative LDL-C; solid lines are transition probabilities not influenced by LDL-C.}
+    \label{Schematic}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/20.pdf}
+    \caption{Age- and sex-specific incidence of non-fatal MI among UK Biobank participants}
+    \label{MIinc}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/25.pdf}
+    \caption{Age-, sex-, and cause-specific mortality among UK Biobank participants without CVD}
+    \label{NOCVDmort}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/30.pdf}
+    \caption{Age-, sex-, and time-since-MI-specific mortality among UK Biobank participants with MI}
+    \label{PMImort}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/99.pdf}
+    \caption{Distribution of utility values for people without MI in PSA}
+    \label{PSAFig4}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/106.pdf}
+    \caption{Cumulative incidence of MI or coronary death, by intervention}
+    \label{PSArfig1}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/106_1.pdf}
+    \caption{Cumulative incidence of MI or coronary death, by intervention and sex}
+    \label{PSArfig2}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/106_2.pdf}
+    \caption{Cumulative incidence of MI or coronary death, by sex, LDL-C, and age of intervention -- Low/moderate intensity statins}
+    \label{PSArfig3}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/106_3.pdf}
+    \caption{Cumulative incidence of MI or coronary death, by sex, LDL-C, and age of intervention -- High intensity statins}
+    \label{PSArfig4}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/106_4.pdf}
+    \caption{Cumulative incidence of MI or coronary death, by sex, LDL-C, and age of intervention -- Low/moderate intensity statins and ezetimibe}
+    \label{PSArfig5}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/106_5.pdf}
+    \caption{Cumulative incidence of MI or coronary death, by sex, LDL-C, and age of intervention -- Inclisiran}
+    \label{PSArfig6}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{log/112.pdf}
+    \caption{PSA simulations presented in a common cost-effectiveness plane, by age of intervention, excluding Inclisiran. Solid line: \textsterling 20,000 per QALY willingness-to-pay threshold; dashed line: \textsterling 30,000 per QALY willingness-to-pay threshold}
+    \label{Scatter1}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/114_1.pdf}
+    \caption{PSA simulations presented in a common cost-effectiveness plane, by age of intervention and sex, excluding Inclisiran. Solid line: \textsterling 20,000 per QALY willingness-to-pay threshold; dashed line: \textsterling 30,000 per QALY willingness-to-pay threshold}
+    \label{Scatter1sex}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/116.pdf}
+    \caption{PSA simulations presented in a common cost-effectiveness plane, by age of intervention and LDL-C. Females.}
+    \label{Scatter0sexldl0}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/116_1.pdf}
+    \caption{PSA simulations presented in a common cost-effectiveness plane, by age of intervention and LDL-C. Males.}
+    \label{Scatter0sexldl1}
+\end{figure}
+
+
+\clearpage
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/96.pdf}
+    \caption{Tornado diagrams for each intervention strategy - Overall}
+    \label{Tornado0}
+    The results of the OSA for the overall population are shown here. For results stratified by sex and LDL-C, see the \href{https://github.com/jimb0w/LDL}{protocol}, pp.174-178. 
+\end{figure}
+
+
+\clearpage
+
+\clearpage
+\bibliography{/Users/jed/Documents/Library.bib}
+\end{document}

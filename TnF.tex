@@ -1,0 +1,154 @@
+
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{siunitx}
+\usepackage{hyperref,graphicx,booktabs,dcolumn}
+\usepackage{stata}
+\usepackage[x11names]{xcolor}
+\usepackage{natbib}
+\usepackage{chngcntr}
+\usepackage{pgfplotstable}
+\usepackage{pdflscape}
+
+\usepackage{multirow}
+\usepackage{booktabs}
+
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+\newcommand{\specialcelll}[3][c]{%
+  \begin{tabular}[#1]{@{}l@{}l@{}}#2\end{tabular}}
+\newcommand{\specialcellll}[4][c]{%
+  \begin{tabular}[#1]{@{}l@{}l@{}l@{}}#2\end{tabular}}
+
+\pagenumbering{gobble}
+
+
+\begin{document}
+
+\begin{landscape}
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Summary of interventions in the total population.}
+    \label{Microsim5PSA}
+	\hspace*{-3.00cm}
+     \fontsize{1pt}{1.5pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Age of intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{10}{*}{##1}}}},
+      display columns/1/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/2/.style={column name=Control, column type={r}, column type/.add={}{|}},
+      display columns/3/.style={column name=\specialcell{\noindent Low/moderate \\ intensity statins}, column type={r}, column type/.add={}{|}},
+      display columns/4/.style={column name=High intensity statins, column type={r}, column type/.add={}{|}},
+      display columns/5/.style={column name=\specialcell{\noindent Low/moderate intensity \\ statins and ezetimibe}, column type={r}, column type/.add={}{|}},
+      display columns/6/.style={column name=Inclisiran, column type={r}, column type/.add={}{|}},
+      every head row/.style={
+        before row={\toprule
+					& & \multicolumn{1}{c}{Absolute value} & \multicolumn{4}{c}{Difference to control}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={10}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA.csv}
+  \end{center}
+Abbreviations: MI -- Myocardial infarction; YLL -- Years of life lived; QALYs -- Quality-adjusted life-years; ICER -- Incremental cost-effectiveness ratio. 
+\end{table}
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Summary of all interventions by LDL-C -- Females.}
+    \label{PSAsum0}
+	\hspace*{-2cm}
+     \fontsize{5pt}{6.5pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{12}{*}{##1}}}},
+	  display columns/1/.style={column name=\specialcell{Age of \\ intervention},
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{3}{*}{##1}}}},
+      display columns/2/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/3/.style={column name=All, column type={r}, column type/.add={}{}},
+      display columns/4/.style={column name=$\geq$3.0 mmol/L, column type={r}, column type/.add={}{}},
+      display columns/5/.style={column name=$\geq$4.0 mmol/L, column type={r}, column type/.add={}{}},
+      display columns/6/.style={column name=$\geq$5.0 mmol/L, column type={r}, column type/.add={}{}},
+      every head row/.style={
+        before row={\toprule
+					& & & \multicolumn{4}{c}{LDL-C}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={12}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA_sum0.csv}
+  \end{center}
+  Abbreviations: LDL-C -- Low-density lipoprotein cholesterol; QALYs -- Quality-adjusted life-years; ICER -- Incremental cost-effectiveness ratio. 
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Summary of all interventions by LDL-C -- Males.}
+    \label{PSAsum1}
+	\hspace*{-2cm}
+     \fontsize{5pt}{6.5pt}\selectfont\pgfplotstabletypeset[
+      multicolumn names,
+      col sep=colon,
+      header=false,
+      string type,
+	  display columns/0/.style={column name=Intervention,
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{12}{*}{##1}}}},
+	  display columns/1/.style={column name=\specialcell{Age of \\ intervention},
+		assign cell content/.code={
+\pgfkeyssetvalue{/pgfplots/table/@cell content}
+{\multirow{3}{*}{##1}}}},
+      display columns/2/.style={column name=Outcome, column type={l}, text indicator=", column type/.add={}{|}},
+      display columns/3/.style={column name=All, column type={r}, column type/.add={}{}},
+      display columns/4/.style={column name=$\geq$3.0 mmol/L, column type={r}, column type/.add={}{}},
+      display columns/5/.style={column name=$\geq$4.0 mmol/L, column type={r}, column type/.add={}{}},
+      display columns/6/.style={column name=$\geq$5.0 mmol/L, column type={r}, column type/.add={}{}},
+      every head row/.style={
+        before row={\toprule
+					& & & \multicolumn{4}{c}{LDL-C}\\
+					},
+        after row={\midrule}
+            },
+        every nth row={12}{before row=\midrule},
+        every last row/.style={after row=\bottomrule},
+    ]{CSV/Res_HOF_PSA_sum1.csv}
+  \end{center}
+  Abbreviations: LDL-C -- Low-density lipoprotein cholesterol; QALYs -- Quality-adjusted life-years; ICER -- Incremental cost-effectiveness ratio. 
+\end{table}
+
+\end{landscape}
+
+\clearpage
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/116_2.pdf}
+    \caption{Results of 1,000 Monte Carlo simulations for each intervention presented in a common cost-effectiveness plane, by age of intervention and LDL-C for females. Inclisiran is excluded in these figures as the costs were too high to appear on the same axes as the other interventions; see Supplementary Figure 14 for a plot including inclisiran. Solid line: \textsterling 20,000 per QALY willingness-to-pay threshold; dashed line: \textsterling 30,000 per QALY willingness-to-pay threshold. Abbreviations: LDL-C -- Low-density lipoprotein cholesterol; QALYs -- Quality-adjusted life-years.}
+    \label{Scatter0sexldl0}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{log/116_3.pdf}
+    \caption{Results of 1,000 Monte Carlo simulations for each intervention presented in a common cost-effectiveness plane, by age of intervention and LDL-C for males. Inclisiran is excluded in these figures as the costs were too high to appear on the same axes as the other interventions; see Supplementary Figure 15 for a plot including inclisiran. Solid line: \textsterling 20,000 per QALY willingness-to-pay threshold; dashed line: \textsterling 30,000 per QALY willingness-to-pay threshold. Abbreviations: LDL-C -- Low-density lipoprotein cholesterol; QALYs -- Quality-adjusted life-years.}
+    \label{Scatter0sexldl1}
+\end{figure}
+
+\end{document}
